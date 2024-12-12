@@ -49,11 +49,12 @@ The **Retail Sales Analysis Dashboard** is an interactive tool built with **Stre
     ```bash
     streamlit run app.py
     ```
+---
 
 ## Project Structure
 
 ```bash
-project/
+hackathon/
 │
 ├── app.py                     # Main Streamlit app
 ├── data/                      # Example and uploaded datasets
