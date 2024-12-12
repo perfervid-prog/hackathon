@@ -1,4 +1,4 @@
-# Retail Sales Analysis Dashboard
+# Retail Sales Analysis Dashboard (Under development)
 
 ## Overview
 The **Retail Sales Analysis Dashboard** is an interactive tool built with **Streamlit** to help businesses analyze sales data, generate insights, predict future trends, and provide actionable recommendations. This project was designed for a hackathon to showcase innovative solutions for retail data analytics.
