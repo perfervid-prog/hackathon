@@ -22,7 +22,8 @@ The **Retail Sales Analysis Dashboard** is an interactive tool built with **Stre
 ### Steps
 
 1. **Clone the Repository**
+
    ```bash
-   git clone https://github.com/your-username/retail-sales-dashboard.git
-   cd retail-sales-dashboard
+   git clone https://github.com/perfervid-prog/hackathon.git
+   cd hackathon
    ```
