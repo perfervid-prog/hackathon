@@ -1,5 +1,6 @@
 import pandas as pd
 
+# loads the report
 def load_data(file):
     """ Load CSV file into a pandas DataFrame"""
     try:
@@ -7,6 +8,7 @@ def load_data(file):
         return data
     except Exception as e:
         raise ValueError("Error loading data. Please ensure it's a valid CSV.")
+    
     
 
 def preprocess_data(data):
