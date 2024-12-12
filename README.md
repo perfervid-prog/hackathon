@@ -35,14 +35,14 @@ The **Retail Sales Analysis Dashboard** is an interactive tool built with **Stre
     hacacode\Scripts\activate       # For Windows
     ```
 
-3. **Install Dependencies**
+3. **Install Dependencies**<br>
     Use the provided `requirements.txt` file to install the necessary python packages.
 
     ```bash
     pip install -r requirements.txt
     ```
 
-4. **Run the application**
+4. **Run the application**<br>
 
     Now, there you go. Launch the Streamlit app:
 
@@ -50,4 +50,22 @@ The **Retail Sales Analysis Dashboard** is an interactive tool built with **Stre
     streamlit run app.py
     ```
 
+## Project Structure
 
+```bash
+project/
+│
+├── app.py                     # Main Streamlit app
+├── data/                      # Example and uploaded datasets
+│   ├── retail_sales_dataset.csv      # Sample dataset for testing
+│
+├── modules/                   # Core functionalities
+│   ├── data_processing.py      # Handles file uploads and preprocessing
+│   ├── visualizations.py       # Handles dynamic plots and graphs
+│   ├── predictive_model.py     # Contains ML model training and predictions
+│   ├── recommendations.py      # Generates personalized recommendations
+│   └── insights.py             # AI-driven insights (e.g., GPT-based summaries)
+│
+├── requirements.txt           # Required Python packages
+├── README.md                  # Project documentation
+```
