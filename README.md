@@ -20,3 +20,9 @@ The **Retail Sales Analysis Dashboard** is an interactive tool built with **Stre
 - Virtual environment tool (e.g., `venv` or `virtualenv`)
 
 ### Steps
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-username/retail-sales-dashboard.git
+   cd retail-sales-dashboard
+   ```
