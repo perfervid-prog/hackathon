@@ -11,15 +11,19 @@ def load_data(file):
 
 def preprocess_data(data):
     """ Perform any necessary data cleaning """
-    # convert date column to datetime
-    data['Date'] = pd.to_datetime(data['Date'])
+    try:
+        # convert date column to datetime
+        data['Date'] = pd.to_datetime(data['Date'])
 
-    # Calculate the total amount if not present
-    if 'Total Amount' not in data.columns:
-        data['Total Amount'] = data['Quantity'] * data['Price per Unit']
+        # Calculate the total amount if not present
+        if 'Total Amount' not in data.columns:
+            data['Total Amount'] = data['Quantity'] * data['Price per Unit']
 
-    # Extract the month and year for analysis
-    data['Month'] = data['Date'].dt.month
-    data['Year'] = data['Date'].dt.year
+        # Extract the month and year for analysis
+        data['Month'] = data['Date'].dt.month
+        data['Year'] = data['Date'].dt.year
 
-    return data
+        return data
+    except Exception as e:
+        raise ValueError("Error preprocessing data.")
+    
