@@ -27,3 +27,27 @@ The **Retail Sales Analysis Dashboard** is an interactive tool built with **Stre
    git clone https://github.com/perfervid-prog/hackathon.git
    cd hackathon
    ```
+2. **Create a virtual enviroment**
+
+    ```bash
+    python -m venv hacacode
+    source hacacode/bin/activate    # For Linux/macOS
+    hacacode\Scripts\activate       # For Windows
+    ```
+
+3. **Install Dependencies**
+    Use the provided `requirements.txt` file to install the necessary python packages.
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Run the application**
+
+    Now, there you go. Launch the Streamlit app:
+
+    ```bash
+    streamlit run app.py
+    ```
+
+
