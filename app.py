@@ -29,7 +29,8 @@ if clicked:
         data = preprocess_data(data)
         
         st.subheader("Dataset summary")
-        st.write(f"Total rows: {data.shape[0]}, Total columns: {data.shape[1]}")
+        st.write("Rows:", data.shape[0])
+        st.write("Columns:", data.shape[1])
 
         st.subheader("Preview of the data")
         st.write(data.head())
