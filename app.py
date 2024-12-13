@@ -1,5 +1,5 @@
 import streamlit as st
-from modules.data_processing import load_data
+from modules.data_processing import load_data, preprocess_data
 from modules.visualizations import plot_sales_over_time, plot_category_distribution
 import pandas as pd
 
@@ -26,6 +26,7 @@ if clicked:
 
     if uploaded_file:
         data = load_data(uploaded_file)
+        data = preprocess_data(data)
         
         st.subheader("Dataset summary")
         st.write(f"Total rows: {data.shape[0]}, Total columns: {data.shape[1]}")
@@ -38,8 +39,11 @@ if clicked:
         if options == "📊 Dashboard":
             st.subheader("Sales Dashboard 📊")
             st.write("Explore your uploaded data.")
+
             plot_sales_over_time(data)
             plot_category_distribution(data)
+
+            st.divider()
             
         elif options == "🔮 Predictions":
             st.title("Predictions")
