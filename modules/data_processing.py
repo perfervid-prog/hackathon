@@ -20,7 +20,7 @@ def preprocess_data(data):
         # removing the customer ID, and so on
         data = data.drop(['Transaction ID', 'Customer ID', 'Quantity', 'Price per Unit'], axis=1)
         # convert date column to datetime
-        data['Date'] = pd.to_datetime(data['Date'])
+        data['Date'] = pd.to_datetime(data['Date']).dt.date
         data = data.sort_values(by='Date')
 
         # Calculate the total amount if not present
