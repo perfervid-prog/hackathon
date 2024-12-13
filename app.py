@@ -18,45 +18,57 @@ st.text("Analyze your sales report to gain insights and make informed decisions.
 st.subheader("Upload Your Sales Report")
 uploaded_file = st.file_uploader("Upload your sales report (format = .csv)", type=["csv"])
 
-clicked = st.button("Generate Report")
+if uploaded_file:
+    data = load_data(uploaded_file)
+    required_columns = ['Transaction ID', 'Date', 'Customer ID', 'Gender', 'Age', 'Product Category', 'Quantity', 'Price per Unit', 'Total Amount']
+    missing_columns = [col for col in required_columns if col not in data.columns]
+    
 
-if clicked:
-
-    st.divider()
-
-    if uploaded_file:
-        data = load_data(uploaded_file)
-        data = preprocess_data(data)
-        
-        st.subheader("Dataset summary")
-        st.write("Rows:", data.shape[0])
-        st.write("Columns:", data.shape[1])
-
-        st.subheader("Preview of the data")
-        st.write(data.head())
-
-        st.divider()
-        
-        if options == "📊 Dashboard":
-            st.subheader("Sales Dashboard 📊")
-            st.write("Explore your uploaded data.")
-
-            plot_sales_over_time(data)
-            plot_category_distribution(data)
-
-            st.divider()
-            
-        elif options == "🔮 Predictions":
-            st.title("Predictions")
-            st.write("Make predictions based on your data.")
-            
-        elif options == "💡 Recommendations":
-            st.title("Personalized Recommendations")
-            st.write("Here are some suggestions:")
-            
-        elif options == "📝 Insights":
-            st.title("AI-Generated Insights")
-            st.write("Insights based on your data.")
+    if missing_columns:
+        st.error(f"Missing columns: {', '.join(missing_columns)}")
 
     else:
-        st.write("Please upload a dataset to proceed.")
+
+        clicked = st.button("Generate Report")
+
+        if clicked:
+
+            st.divider()
+
+            if uploaded_file:
+                data = preprocess_data(data)
+                
+                st.subheader("Dataset summary")
+                st.write("Rows:", data.shape[0])
+                st.write("Columns:", data.shape[1])
+
+                st.subheader("Preview of the data")
+                # Display data with full width
+                st.dataframe(data.head(), use_container_width=True)
+
+
+                st.divider()
+                
+                if options == "📊 Dashboard":
+                    st.subheader("Sales Dashboard 📊")
+                    st.write("Explore your uploaded data.")
+
+                    plot_sales_over_time(data)
+                    # plot_category_distribution(data)
+
+                    st.divider()
+                    
+                elif options == "🔮 Predictions":
+                    st.title("Predictions")
+                    st.write("Make predictions based on your data.")
+                    
+                elif options == "💡 Recommendations":
+                    st.title("Personalized Recommendations")
+                    st.write("Here are some suggestions:")
+                    
+                elif options == "📝 Insights":
+                    st.title("AI-Generated Insights")
+                    st.write("Insights based on your data.")
+
+            else:
+                st.write("Please upload a dataset to proceed.")
