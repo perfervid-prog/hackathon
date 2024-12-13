@@ -23,4 +23,4 @@ def plot_sales_over_time(data):
         st.dataframe(filtered_data)
     """Visualize sales trends over time."""
     # fig = px.line(data, x='Date', y='Total Amount', title='Sales Trends Over Time')
-    st.line_chart(filtered_data, x = 'Date', y = 'Total Amount', x_label='Date', y_label='Total Amount')
+    st.bar_chart(filtered_data, x = 'Date', y = 'Total Amount', x_label='Date', y_label='Total Amount')
