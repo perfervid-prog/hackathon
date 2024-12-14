@@ -15,23 +15,26 @@ def load_data(file):
     
 
 def preprocess_data(data):
-    """ Perform any necessary data cleaning """
+    """ Perform necessary data cleaning and retain all relevant columns """
     try:
-        # removing the customer ID, and so on
-        data = data.drop(['Transaction ID', 'Customer ID', 'Quantity', 'Price per Unit'], axis=1)
-        # convert date column to datetime
+        # Specify the columns to drop
+        columns_to_drop = ['Transaction ID', 'Gender', 'Age', 'Customer ID', 'Quantity', 'Price per Unit']
+        retained_columns = [col for col in data.columns if col not in columns_to_drop]
+
+        # Ensure 'Date' is in datetime format
         data['Date'] = pd.to_datetime(data['Date']).dt.date
-        data = data.sort_values(by='Date')
 
-        # Calculate the total amount if not present
-        if 'Total Amount' not in data.columns:
-            data['Total Amount'] = data['Quantity'] * data['Price per Unit']
+        # Group by 'Date' and aggregate Total Amount while keeping other columns
+        data = data.groupby('Date', as_index=False).agg({
+            **{col: 'first' for col in retained_columns if col != 'Total Amount'},  # Keep the first occurrence of other columns
+            'Total Amount': 'sum'  # Sum for Total Amount
+        })
 
-        # Extract the month and year for analysis
-        # data['Month'] = data['Date'].dt.month
-        # data['Year'] = data['Date'].dt.year
+        # Sort by date
+        data = data.sort_values(by='Date').reset_index(drop=True)
 
         return data
     except Exception as e:
-        raise ValueError("Error preprocessing data.")
+        raise ValueError(f"Error preprocessing data: {str(e)}")
+
     

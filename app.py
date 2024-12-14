@@ -20,6 +20,8 @@ if 'data' not in st.session_state:
   st.session_state.data = None
 if 'uploaded_file_key' not in st.session_state:
     st.session_state.uploaded_file_key = None
+if 'button_click_generate' not in st.session_state:
+    st.session_state.button_click_generate = False
 if 'report_generated' not in st.session_state:
     st.session_state.report_generated = False  # Track if report is generated
     
@@ -51,18 +53,22 @@ elif uploaded_file is None:
 
 clicked = st.button("Generate Report")
 
-if clicked and st.session_state.data is not None:
+if clicked and st.session_state.button_click_generate == False and st.session_state.data is not None:
+    st.session_state.button_click_generate = True
     st.session_state.report_generated = True
-    data = st.session_state.data
-    st.divider()
-    st.subheader("Dataset summary")
-    st.write("Rows:", data.shape[0])
-    st.write("Columns:", data.shape[1])
-    
-    st.subheader("Preview of the data")
-    st.dataframe(data.head(), use_container_width=True)
 
-    st.divider()
+if st.session_state.button_click_generate and st.session_state.data is not None:
+  data = st.session_state.data
+  st.divider()
+
+  st.subheader("Dataset summary")
+  st.write("Rows:", data.shape[0])
+  st.write("Columns:", data.shape[1])
+      
+  st.subheader("Preview of the data")
+  st.dataframe(data.head(), use_container_width=True)
+
+  st.divider()
 
 if options == "Dashboard" and st.session_state.report_generated and st.session_state.data is not None:
     st.subheader("Sales Dashboard")
