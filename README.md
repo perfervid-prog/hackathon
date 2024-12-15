@@ -27,12 +27,12 @@ The **Retail Sales Analysis Dashboard** is an interactive tool built with **Stre
    git clone https://github.com/perfervid-prog/hackathon.git
    cd hackathon
    ```
-2. **Create a virtual enviroment**
+2. **Create a virtual enviroment (use cmd)**
 
     ```bash
-    python -m venv hacacode
-    source hacacode/bin/activate    # For Linux/macOS
-    hacacode\Scripts\activate       # For Windows
+    python -m venv venv
+    source venv/bin/activate    # For Linux/macOS
+    venv\Scripts\activate       # For Windows
     ```
 
 3. **Install Dependencies**<br>
