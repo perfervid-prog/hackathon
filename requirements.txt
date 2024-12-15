@@ -1,3 +1,7 @@
-streamlit
-plotly
-pandas
+streamlit==1.38.0
+plotly==5.24.1
+pandas==2.2.2
+numpy==1.26.4
+beautifulSoup==4.12.3
+duckduckgo_search==5.3.0
+matplotlib==3.9.2
